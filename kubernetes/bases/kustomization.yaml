@@ -1,0 +1,4 @@
+commonLabels:
+  part-of: hello
+resources:
+  - hello-deployment.yaml
