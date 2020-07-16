@@ -13,3 +13,6 @@ ARG CACHE_REFRESH=1
 COPY . .
 
 RUN echo ${CACHE_REFRESH}
+
+# Run our application
+CMD npm run start

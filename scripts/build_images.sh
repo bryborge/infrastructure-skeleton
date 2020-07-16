@@ -24,4 +24,4 @@ build_image() {
     --ssh default .
 }
 
-build_image hello local
+build_image hello dev
