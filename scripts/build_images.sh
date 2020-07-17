@@ -3,7 +3,7 @@
 set -euo pipefail
 
 #
-# Build docker image of name:version specified in the infrastructure/docker
+# Build docker image of name:version specified in the docker
 # directory.
 #
 build_image() {
@@ -24,4 +24,4 @@ build_image() {
     --ssh default .
 }
 
-build_image hello dev
+build_image demo dev

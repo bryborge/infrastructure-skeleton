@@ -1,4 +1,5 @@
 commonLabels:
-  part-of: hello
+  part-of: demo
 resources:
-  - hello-deployment.yaml
+  - demo-deployment.yaml
+  - demo-service.yaml
