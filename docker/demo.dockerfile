@@ -16,3 +16,5 @@ RUN echo ${CACHE_REFRESH}
 
 # Run our application
 CMD npm run start
+
+EXPOSE 3000

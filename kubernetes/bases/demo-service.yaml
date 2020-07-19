@@ -9,9 +9,12 @@ metadata:
     part-of: demo
     tier: app
 spec:
+  type: NodePort
   ports:
     - port: 3000
       targetPort: 3000
+      protocol: TCP
+      name: http
   selector:
     app: hello-world
     environment: node
