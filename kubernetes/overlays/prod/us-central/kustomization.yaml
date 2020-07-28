@@ -1,0 +1,9 @@
+#
+# base(s) is deprecated at kustomize v2.1.0
+# add this value to resources upon kubectl upgrade.
+# Current kubectl version: 1.16.x (kustomize version: 2.0.3)
+#
+# https://github.com/kubernetes-sigs/kustomize#kubectl-integration
+#
+#bases:
+#  - ../bases

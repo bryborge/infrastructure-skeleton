@@ -132,33 +132,32 @@ The other goal was to come up with a sane way to organize infrastructure code al
 
 ```shell script
 .
+├── aws
 ├── ci
 ├── docker
-│   └── demo.dockerfile
 ├── kubernetes
-│   ├── aws
 │   ├── bases
-│   └── local
-├── package-lock.json
-├── package.json
+│   │   └── kustomization.yaml
+│   └── overlays
+│       ├── dev
+│       │   └── kustomization.yaml
+│       ├── prod
+│       │   ├── bases
+│       │   │   └── kustomization.yaml
+│       │   ├── us-central
+│       │   │   └── kustomization.yaml
+│       │   ├── us-east
+│       │   │   └── kustomization.yaml
+│       │   └── us-west
+│       │       └── kustomization.yaml
+│       ├── staging
+│       │   ├── bases
+│       │   │   └── kustomization.yaml
+│       │   └── us-west
+│       │       └── kustomization.yaml
+│       └── test
+│           ├── kustomization.yaml
+│           └── namespace.yaml
 ├── scripts
-│   └── build_images.sh
 └── src
-    ├── README.md
-    └── index.js
 ```
-
-*   `ci/` - continuous integration code.
-*   `docker/` - dockerfiles and container-level configuration code.
-*   `kubernetes/` - k8s infrastructure code.
-    *   `aws/` - CloudFormation configuration code (this can just as well be `gcp` or any other cloud platform
-        provider)
-        *   `dev/` - Development environment infrastructure configuration code.
-            *   `bases/` - same concept as `kubernetes/bases/`, but for this environment.
-            *   `us-west-2` - availability-zone specific configuration code.
-        *   `staging/` - Staging environment infrastructure configuration code.
-        *   `prod/` - Production environment infrastructure configuration code. 
-    *   `bases/` - k8s base-level configuration code (many environments may depend on the files that live here).
-    *   `local/` - local k8s overlay configuration code (deploying infrastructure in a local context).
-*   `scripts/` - helper scripts.
-*   `src/` - application source code.

@@ -1,4 +1,4 @@
-# Kubernetes (k8s)
+# Kubernetes
 
 This documentation seeks to expound upon some key elements of kubernetes as well as provide a rationale for the
 structure of this directory.
