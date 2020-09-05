@@ -34,11 +34,12 @@ and how to access the demo application.
     operating system (Docker Desktop for macOS/Windows, Docker Engine for Linux).
 *   Kubernetes via
     [Docker Desktop](https://docs.docker.com/docker-for-mac/#kubernetes) or
-    [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) - Because I am running macOS with Docker
-    Desktop, which includes a standalone Kubernetes server and client,
+    [microk8s](https://microk8s.io/docs) - Because I am running macOS with Docker Desktop,
+    which includes a standalone Kubernetes server and client,
     I prefer enabling Kubernetes via Docker Desktop.
     If you prefer or aren't able to run Kubernetes in this way,
-    Minikube is a great choice.
+    microk8s is a great choice,
+    though some additional steps may be required.
 
 ### Deploying Locally
 
@@ -71,10 +72,10 @@ we can begin.
     ...
     ```
 
-1.  Load the infrastructure described in the various configuration files in the `kubernetes/local/bases/` directory.
+1.  Load the infrastructure described in the various configuration files under the `kubernetes/` directory.
 
     ```shell script
-    kubectl kustomize kubernetes/local/bases/ | kubectl apply -f -
+    kubectl kustomize kubernetes/overlays/dev/ | kubectl apply -f -
     ```
 
     [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) is a standalone tool that
@@ -105,7 +106,7 @@ we can begin.
     This will drop you on a shell where you can explore the pod,
     and the application code that was loading into the container.
     
-1.  The service is configured to expose the pod's `3000` port so that it can be interacted with in your local
+1.  The service exposes the pod's `3000` port so that it can be interacted with in your local
     browser window.
     
     To find the local port on which you can access the pod,
@@ -124,41 +125,3 @@ we can begin.
 
 1.  Navigate to `localhost:30189` (in this example) in your favorite browser,
     and you should be greeted with the message "hello world".
-
-## Project Structure
-
-One goal of this project was to dive in and understand how to use Kubernetes using a simple application example.
-The other goal was to come up with a sane way to organize infrastructure code alongside the application's code.
-
-```shell script
-.
-├── ci
-├── docker
-│   └── demo.dockerfile
-├── kubernetes
-│   ├── aws
-│   ├── bases
-│   └── local
-├── package-lock.json
-├── package.json
-├── scripts
-│   └── build_images.sh
-└── src
-    ├── README.md
-    └── index.js
-```
-
-*   `ci/` - continuous integration code.
-*   `docker/` - dockerfiles and container-level configuration code.
-*   `kubernetes/` - k8s infrastructure code.
-    *   `aws/` - CloudFormation configuration code (this can just as well be `gcp` or any other cloud platform
-        provider)
-        *   `dev/` - Development environment infrastructure configuration code.
-            *   `bases/` - same concept as `kubernetes/bases/`, but for this environment.
-            *   `us-west-2` - availability-zone specific configuration code.
-        *   `staging/` - Staging environment infrastructure configuration code.
-        *   `prod/` - Production environment infrastructure configuration code. 
-    *   `bases/` - k8s base-level configuration code (many environments may depend on the files that live here).
-    *   `local/` - local k8s overlay configuration code (deploying infrastructure in a local context).
-*   `scripts/` - helper scripts.
-*   `src/` - application source code.

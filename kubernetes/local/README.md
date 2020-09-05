@@ -1,3 +1,0 @@
-# K8s - Overlays
-
-More to come ...

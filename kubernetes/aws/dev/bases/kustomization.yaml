@@ -1,7 +1,0 @@
-#namePrefix: hello-
-#commonLabels:
-#  part-of: hello
-#bases:
-#  - ../../../bases
-#resources:
-#  - localstack.yaml

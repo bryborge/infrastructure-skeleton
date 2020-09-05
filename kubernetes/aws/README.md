@@ -1,3 +1,0 @@
-# AWS Notes
-
-More to come ...

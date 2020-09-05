@@ -2,3 +2,6 @@
 .DS_Store
 
 # Project-level dependencies
+
+# Generated image files
+*.tar

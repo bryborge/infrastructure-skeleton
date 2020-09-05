@@ -1,3 +1,0 @@
-# K8s - Bases
-
-More to come ...

@@ -2,13 +2,13 @@
 
 set -euo pipefail
 
-#
+##
 # Build docker image of name:version specified in the docker
 # directory.
-#
+
 build_image() {
   if [ $# -ne 2 ]; then
-    echo 1>&2 "Usage: build_image [name] [version]"
+    echo 1>&2 "Usage: build_images [name] [version]"
     exit 1
   fi
 
