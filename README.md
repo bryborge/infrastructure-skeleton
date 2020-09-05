@@ -105,7 +105,7 @@ we can begin.
     This will drop you on a shell where you can explore the pod,
     and the application code that was loading into the container.
     
-1.  The service is configured to expose the pod's `3000` port so that it can be interacted with in your local
+1.  The service exposes the pod's `3000` port so that it can be interacted with in your local
     browser window.
     
     To find the local port on which you can access the pod,
