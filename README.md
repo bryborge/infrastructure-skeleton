@@ -34,11 +34,12 @@ and how to access the demo application.
     operating system (Docker Desktop for macOS/Windows, Docker Engine for Linux).
 *   Kubernetes via
     [Docker Desktop](https://docs.docker.com/docker-for-mac/#kubernetes) or
-    [Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube/) - Because I am running macOS with Docker
-    Desktop, which includes a standalone Kubernetes server and client,
+    [microk8s](https://microk8s.io/docs) - Because I am running macOS with Docker Desktop,
+    which includes a standalone Kubernetes server and client,
     I prefer enabling Kubernetes via Docker Desktop.
     If you prefer or aren't able to run Kubernetes in this way,
-    Minikube is a great choice.
+    microk8s is a great choice,
+    though some additional steps may be required.
 
 ### Deploying Locally
 
@@ -71,10 +72,10 @@ we can begin.
     ...
     ```
 
-1.  Load the infrastructure described in the various configuration files in the `kubernetes/local/bases/` directory.
+1.  Load the infrastructure described in the various configuration files under the `kubernetes/` directory.
 
     ```shell script
-    kubectl kustomize kubernetes/local/bases/ | kubectl apply -f -
+    kubectl kustomize kubernetes/overlays/dev/ | kubectl apply -f -
     ```
 
     [Kustomize](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/) is a standalone tool that
